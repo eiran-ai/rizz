@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #FFF8F3;
+  --color-coral: #E8555A;
+  --color-coral-light: #FF7A7E;
+  --color-plum: #9B6CF7;
+  --color-plum-light: #B490FA;
+  --color-ink: #1C1917;
+  --color-ink-muted: #78716C;
+  --color-ink-soft: #A8A29E;
+  --color-card: #FFFFFF;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Poppins', system-ui, sans-serif;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100dvh;
+  background: linear-gradient(145deg, #FFF0F1 0%, #FFF8F3 45%, #F5F0FF 100%);
+  background-attachment: fixed;
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+::selection {
+  background: var(--color-coral);
+  color: white;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(-2deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.15); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.1); }
+  70% { transform: scale(1); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(232, 85, 90, 0.3); }
+  50% { box-shadow: 0 0 0 14px rgba(232, 85, 90, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
