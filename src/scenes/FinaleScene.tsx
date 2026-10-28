@@ -5,6 +5,7 @@ import type { DatePlan } from './DateBuilderScene'
 
 interface Props {
   name: string
+  phone: string
   plan: DatePlan
   onReplay: () => void
 }
@@ -22,8 +23,8 @@ const WHERE_LABEL: Record<DatePlan['where'], string> = {
 }
 
 
-export function FinaleScene({ name, plan, onReplay }: Props) {
-  const whatsappUrl = `https://wa.me/250790459292?text=${encodeURIComponent(
+export function FinaleScene({ name, phone, plan, onReplay }: Props) {
+  const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(
     `Hey! I just went through your little website thing... 😏 ${WHERE_EMOJI[plan.where]} when are you free?`,
   )}`
 

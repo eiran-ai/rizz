@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useCallback, useState } from 'react'
 import { Particles } from './components/Particles'
 import { useName } from './hooks/useName'
+import { usePhone } from './hooks/usePhone'
 import { DateBuilderScene, type DatePlan } from './scenes/DateBuilderScene'
 import { FinaleScene } from './scenes/FinaleScene'
 import { IntroScene } from './scenes/IntroScene'
@@ -13,6 +14,7 @@ const FLOW: Scene[] = ['intro', 'letter', 'question', 'datepicker', 'finale']
 
 export default function App() {
   const name = useName()
+  const phone = usePhone()
   const [sceneIndex, setSceneIndex] = useState(0)
   const [datePlan, setDatePlan] = useState<DatePlan | null>(null)
   const scene = FLOW[sceneIndex]
@@ -49,7 +51,7 @@ export default function App() {
           {scene === 'question' && <QuestionScene name={name} onComplete={advance} />}
           {scene === 'datepicker' && <DateBuilderScene onComplete={handleDatePicked} />}
           {scene === 'finale' && datePlan && (
-            <FinaleScene name={name} plan={datePlan} onReplay={replay} />
+            <FinaleScene name={name} phone={phone} plan={datePlan} onReplay={replay} />
           )}
         </motion.div>
       </AnimatePresence>
